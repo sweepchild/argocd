@@ -1,1 +1,4 @@
+global:
+  imagePullSecrets:
+    - name: dockerhub-credentials
 replicaCount: 3

@@ -14,14 +14,11 @@ spec:
       targetRevision: 20.1.3
       helm:
         releaseName: nginx
-        parameters:
-          - name: global.imagePullSecrets[0].name
-            value: dockerhub-credentials
         valueFiles:
           - $myvalues/values/myapp/values.yaml
     - repoURL: 'https://github.com/sweepchild/argocd.git'
       targetRevision: HEAD
-      ref: values
+      ref: myvalues
 
   syncPolicy:
     automated:
