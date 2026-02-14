@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: myapp
+  namespace: argo-cd
+spec:
+  generators: []
+  template:
+    metadata:
+      name: myapp
+    spec:
+      syncPolicy:
+        automated:
+          prune: false
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+      project: myapp
+      destination:
+        server: https://192.168.100.191:6443
+      source:
+        repoURL: https://charts.bitnami.com/bitnamilegacy
+        targetRevision: HEAD
+        helm:
+          releaseName: nginx
